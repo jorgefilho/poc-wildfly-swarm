@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>dev.jorgefilho.poc</groupId>
+  <artifactId>poc-wildfly-swarm</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>poc-wildfly-swarm</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>1.8</java.version>
+    <version.joda-time>2.7</version.joda-time>
+    <version.wildfly-swarm>1.0.0.Alpha3</version.wildfly-swarm>
+  </properties>
+
+  <dependencies>
+   <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>wildfly-swarm-jaxrs</artifactId>
+      <version>${version.wildfly-swarm}</version>
+    </dependency>
+   <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+      <version>${version.joda-time}</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+          <packagingExcludes>WEB-INF/lib/poc-wildfly-swarm-*.jar</packagingExcludes>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.wildfly.swarm</groupId>
+        <artifactId>wildfly-swarm-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>
